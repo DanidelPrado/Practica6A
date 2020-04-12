@@ -1,15 +1,13 @@
 read -p "Introduce el numero de litros: " x
-precio=0;
+while [ $x -le 0 ]; do
+	read -p "Introduce el numero de litros: " x
 if [ $x -le 50 ]; then
-echo "Cuesta 50 euros."
-else if [ $x -le 250 ]; then
-	x=`expr $x - 50`
-	precio= $(echo "scale=2; $x * 0.2" | bc)
-	precio=`expr $precio + 50`
-	echo "El precio es de $precio euros"
+coste=20
+else if [ $x -le 200 ]; then
+	resto=$((x-50))
+	coste=`echo "schale=2; $resto*0.2+20" | bc`
 	else 
-	x=`expr $x - 250`
-	precio= $(echo "scale=2; $x * 0.1" | bc)
-	echo "El precio es de $precio euros"
+	resto=$((x-200))
+	coste=`echo "schale=2; $resto*0.1+50" | bc`
 	fi
 fi
